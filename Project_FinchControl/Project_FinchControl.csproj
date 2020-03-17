@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FinchAPI">
-      <HintPath>..\FinchAPI\FinchAPI.dll</HintPath>
+      <HintPath>..\FinchAPI\FinchAPI\FinchAPI.dll</HintPath>
     </Reference>
     <Reference Include="HidSharp">
-      <HintPath>..\FinchAPI\HidSharp.dll</HintPath>
+      <HintPath>..\FinchAPI\FinchAPI\HidSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

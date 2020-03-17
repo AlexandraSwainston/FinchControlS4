@@ -285,14 +285,13 @@ namespace Project_FinchControl
         {
             int timeToMonitor;
             bool validResponse;
-            validResponse = true;
-
+               
             do
             {
                 DisplayScreenHeader("Time to Monitor");
 
                 Console.Write("Time to Monitor [seconds]:");
-                int.TryParse(Console.ReadLine(), out timeToMonitor);
+                validResponse = int.TryParse(Console.ReadLine(), out timeToMonitor);
 
                 if (!validResponse)
                 {
@@ -302,9 +301,13 @@ namespace Project_FinchControl
                 }
             } while (!validResponse);
             
-            DisplayContinuePrompt();
+            DisplayContinuePrompt();           
+            
+            return timeToMonitor; 
+            
 
-            return timeToMonitor;
+
+            
         }
 
         static int LightAlarmDisplaySetMinimumMaximumThresholdValue(string rangeType, Finch finchRobot)
@@ -338,12 +341,22 @@ namespace Project_FinchControl
         static string LightAlarmDisplaySetRangeType()
         {
             string rangeType;
+            string userResponse;
 
+            do
+            {
+                DisplayScreenHeader("Range Type");
 
-            DisplayScreenHeader("Range Type");
+                Console.Write("Range Type: [minimum, maximum]");
+                userResponse = Console.ReadLine().ToLower();
+                rangeType = userResponse;
 
-            Console.Write("Range Type:");
-            rangeType = Console.ReadLine();
+                if (userResponse != "minimum" && userResponse != "maximum")
+                {
+                    Console.WriteLine("Please enter 'minimum' or 'maximum'");
+                    DisplayContinuePrompt();
+                }
+            } while (rangeType != "minimum" && rangeType != "maximum");
 
             DisplayContinuePrompt();
 
@@ -353,17 +366,27 @@ namespace Project_FinchControl
         static string LightAlarmDisplaySetSensorsToMonitor()
         {
             string sensorsToMonitor;
+            string userResponse;
 
-            DisplayScreenHeader("Sensors to Monitor");
+            do
+            {
+                DisplayScreenHeader("Sensors to Monitor");
 
-            Console.Write("Sensors to Monitor:");
-            sensorsToMonitor = Console.ReadLine();
+                Console.Write("Sensors to Monitor: [right, left, both]");
+                userResponse = Console.ReadLine().ToLower();
+                sensorsToMonitor = userResponse;
+
+                if (userResponse != "left" && userResponse != "right" && userResponse != "both")
+                {
+                    Console.WriteLine("Please enter 'left', 'right', or 'both'");
+                    DisplayContinuePrompt();
+                }
+            } while (sensorsToMonitor != "left" && sensorsToMonitor != "right" && sensorsToMonitor != "both");
 
             DisplayContinuePrompt();
 
             return sensorsToMonitor;
         }
-
         #endregion
 
         #region DATA RECORDER
