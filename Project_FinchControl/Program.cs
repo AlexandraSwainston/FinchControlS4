@@ -289,7 +289,7 @@ namespace Project_FinchControl
             DisplayScreenHeader("Finch Robot Commands");
 
             //
-            // list ofcommands
+            // list commands
             //
             int commandCount = 1;
             Console.WriteLine("\tList of Available Commands");
